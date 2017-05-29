@@ -5,15 +5,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.ImageView;
 import java.util.List;
-import java.util.zip.Inflater;
 
-/**
- * Created by hackeru on 29/05/2017.
- */
-
-public class AnimalRecyclerAdapter extends RecyclerView.Adapter<AnimalViewHolder> {
+public class AnimalRecyclerAdapter extends RecyclerView.Adapter<AnimalRecyclerAdapter.AnimalViewHolder> {
 
     List<Animal> animals;
     private LayoutInflater inflater;
@@ -41,5 +36,19 @@ public class AnimalRecyclerAdapter extends RecyclerView.Adapter<AnimalViewHolder
     @Override
     public int getItemCount() {
         return animals.size();
+    }
+
+    public class AnimalViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        ImageView ivAnimal;
+        public AnimalViewHolder(View v) {
+            super(v);
+            ivAnimal = (ImageView) v.findViewById(R.id.ivAnimal);
+            v.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            int position = getAdapterPosition();
+        }
     }
 }
