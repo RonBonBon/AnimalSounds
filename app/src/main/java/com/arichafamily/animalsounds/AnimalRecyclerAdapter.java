@@ -1,6 +1,7 @@
 package com.arichafamily.animalsounds;
 
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,8 +48,19 @@ public class AnimalRecyclerAdapter extends RecyclerView.Adapter<AnimalRecyclerAd
         }
 
         @Override
-        public void onClick(View v) {
+        public void onClick(final View v) {
             int position = getAdapterPosition();
+            Animal a = animals.get(position);
+
+            MediaPlayer mediaPlayer = MediaPlayer.create(context, a.getSoundReID());
+            mediaPlayer.start();
+
+            v.animate().rotation(360).withEndAction(new Runnable() {
+                @Override
+                public void run() {
+                    v.animate().rotation(0);
+                }
+            });
         }
     }
 }
