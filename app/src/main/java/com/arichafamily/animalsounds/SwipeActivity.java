@@ -30,7 +30,7 @@ public class SwipeActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return 0;
+            return 2;
         }
     }
 }
